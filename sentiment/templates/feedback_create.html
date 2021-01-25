@@ -1,0 +1,48 @@
+<a href="{% url 'index' %}">Home</a>
+
+<h1>Send us your feedback!</h1>
+
+{% if messages %}
+<ul>
+   {% for message in messages %}
+   <li style="color: green"> {{ message }} </li>
+   {% endfor %}
+</ul>
+{% endif %}
+
+<hr>
+
+<form method="post" action="{% url 'review_sent' %}" >
+
+{% csrf_token %}
+
+<table>
+   <tr>
+       <td>{{ review_form.sentiment_score.label_tag.as_hidden }}</td>
+       <td>{{ review_form.sentiment_score.as_hidden }}</td>
+   </tr>
+
+   <tr>
+       <td>{{ review_form.author.label_tag }}</td>
+       <td>{{ review_form.author }}</td>
+   </tr>
+
+   <tr>
+       <td>{{ review_form.author_email.label_tag }}</td>
+       <td>{{ review_form.author_email }}</td>
+   </tr>
+
+   <tr>
+       <td>{{ review_form.review_title.label_tag }}</td>
+       <td>{{ review_form.review_title }}</td>
+   </tr>
+
+   <tr>
+       <td>{{ review_form.review_body.label_tag }}</td>
+       <td>{{ review_form.review_body }}</td>
+   </tr>
+</table>
+
+<input type="submit" value="Send">
+
+</form>

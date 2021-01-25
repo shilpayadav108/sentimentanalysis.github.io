@@ -1,0 +1,17 @@
+<a href="{% url 'index' %}">Home</a>
+
+<h1>The reviews list</h1>
+
+{% if reviews_list %}
+
+   <p>Critical reviews are highlighted with red. Please, process them first.</p>
+
+   <ul>
+   {% for review in reviews_list %}
+       <li><a {% if review.is_critical %} style="color: red"  {% endif %}
+              href="{% url 'review_details' pk=review.pk %}">{{ review.review_title }}</a></li>
+   {% endfor %}
+   </ul>
+{% else %}
+   <p>No reviews are available.</p>
+{% endif %}

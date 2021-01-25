@@ -1,0 +1,16 @@
+<a href="{% url 'index' %}">Home</a>
+
+<h1>Review details</h1>
+
+<p>Author: <i>{{review.author}}</i></p>
+<p>Email: <i>{{review.author_email}}</i></p>
+<p>Created at: <i>{{review.creation_date}}</i></p>
+<p>Sentiment score: <i>{{review.sentiment_score}}</i></p>
+
+{% if review.is_critical %}
+<p style="color: red"> CRITICAL </p>
+{% endif %}
+
+<h3>Title: {{ review.review_title }} </h3>
+
+<p> {{ review.review_body }} </p>
